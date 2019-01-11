@@ -14,10 +14,12 @@ import java.io.IOException;
 import static java.lang.System.in;
 import java.util.Properties;
 import java.util.Scanner;
+import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 /**
  *
@@ -67,8 +69,15 @@ public class MessageProducer
         while (!line.equals("exit"))
         {
             //TODO: Make sure to use the ProducerRecord constructor that does not take parition Id
-            ProducerRecord<String, String> rec = new ProducerRecord(topicName, line);
-            producer.send(rec);
+            ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName, null, line);
+            producer.send(rec, new Callback()
+            {
+                @Override
+                public void onCompletion(RecordMetadata metadata, Exception excptn)
+                {
+                    System.out.println("Message sent to topic ->" + metadata.topic() + " stored at offset->" + metadata.offset());
+                }
+            });
             line = scanner.nextLine();
         }
         in.close();
