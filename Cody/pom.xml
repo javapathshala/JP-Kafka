@@ -8,7 +8,7 @@
     <name>JP Kafka Project</name>
     <description>JP Kafka Parent Project</description>
     <modules>
-        <module>simple</module>        
+        <module>basic</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +22,6 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${version.org.apache.kafka}</version>
-        </dependency>       
-    </dependencies>   
+        </dependency>
+    </dependencies>
 </project>
