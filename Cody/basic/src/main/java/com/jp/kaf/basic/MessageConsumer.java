@@ -37,7 +37,8 @@ public class MessageConsumer
     {
 
         MessageConsumer messageConsumer = new MessageConsumer();
-        messageConsumer.consumeMessage(args[0], args[1], Long.parseLong(args[2]));
+//        messageConsumer.consumeMessage(args[0], args[1], Long.parseLong(args[2]));
+        messageConsumer.consumeMessage("JP", "1", 0);
 
 //        if (argv.length != 2) {
 //            System.err.printf("Usage: %s <topicName> <groupId>\n",

@@ -43,7 +43,7 @@ public class MessageProducer
     public static void main(String[] args) throws Exception
     {
         MessageProducer messageProducer = new MessageProducer();
-        messageProducer.produceMessage(args[0]);
+        messageProducer.produceMessage("JP");
     }
 
     /**
